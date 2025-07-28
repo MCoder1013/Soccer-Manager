@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+
+{% block title %}
+  My Soccer Club - List of all Players
+{% endblock %}
+
+    
+{% block content %}
+  
+    <h1>Players</h1>
+  
+    <ul>
+        {% for x in myplayers %}
+            <li><a href = "details/{{ x.id }}">{{ x.firstname }} {{ x.lasname }}</a></li>
+        {% endfor %}
+    </ul>
+    </p><a href = "/">HOME</a></p>
+{% endblock %}

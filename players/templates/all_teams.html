@@ -1,0 +1,19 @@
+{% extends 'master.html' %}
+
+
+{% block title %}
+  My Soccer Club - List of all Teams
+{% endblock %}
+
+    
+{% block content %}
+  
+    <h1>Teams</h1>
+  
+    <ul>
+        {% for x in myteams %}
+            <li><a >{{ x.name }} {{ x.city }} {{x.coach}}</a></li>
+        {% endfor %}
+    </ul>
+   
+{% endblock %}

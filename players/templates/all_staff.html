@@ -1,0 +1,21 @@
+{% extends "master.html" %} 
+
+{% block title %} 
+Staff 
+{% endblock %}
+
+
+
+{% block content %}
+
+<h1> Staff </h1>
+
+<ul> 
+    {% for x in mystaff %}
+    <li><a>{{x.firstname}} {{x.lastname}}</a></li>
+    {% endfor %}
+</ul>
+
+<p><a href = "/"> HOME </a></p>
+
+{% endblock %}

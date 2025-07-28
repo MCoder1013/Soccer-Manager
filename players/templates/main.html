@@ -1,0 +1,23 @@
+{% extends "master.html" %} 
+
+{% block title %} 
+    My Soccer Club
+{% endblock %} 
+
+
+
+{% block content %} 
+
+    <h1> My Soccer Club </h1>
+
+    <h3>Players</h3>
+
+    <p>Check out all our <a href = "{% url 'players' %}">players</a></p>
+    
+    <h3>Staff</h3>
+    <p> Check out all our <a href = "{% url 'staff' %}">Staff</a></p>
+
+    
+    
+
+{% endblock %}
