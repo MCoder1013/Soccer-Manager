@@ -3,7 +3,7 @@ from .models import Player, Staff, Team
 # Register your models here.
 
 class PlayerAdmin(admin.ModelAdmin): 
-    list_display = ("firstname", "lasname", "joined_date")
+    list_display = ("firstname", "lastname", "joined_date")
 admin.site.register(Player, PlayerAdmin)
 
 class StaffAdmin(admin.ModelAdmin): 
