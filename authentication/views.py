@@ -78,3 +78,5 @@ def register_page(request):
     
     # Render the registration page template (GET request)
     return render(request, 'register.html')
+
+
