@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from players.models import Team
 from .models import *
 
 
@@ -51,7 +52,8 @@ def register_page(request):
         last_name = request.POST.get('last_name')
         username = request.POST.get('username')
         password = request.POST.get('password')
-        
+        team_id = request.POST.get('team')
+
         # Check if a user with the provided username already exists
         user = User.objects.filter(username=username)
         
@@ -59,7 +61,7 @@ def register_page(request):
             # Display an information message if the username is taken
             messages.info(request, "Username already taken!")
             return redirect('register')
-        
+
         # Create a new User object with the provided information
         user = User.objects.create_user(
             first_name=first_name,
@@ -71,12 +73,22 @@ def register_page(request):
         # Set the user's password and save the user object
         user.set_password(password)
         user.save()
-        
+
+        # Create UserProfile with selected team
+        team = Team.objects.get(id=team_id)
+        UserProfile.objects.create(user=user, team=team)
+
         # Display an information message indicating successful account creation
         messages.info(request, "Account created Successfully!")
-        return redirect('register/')
-    
-    # Render the registration page template (GET request)
-    return render(request, 'register.html')
+        return redirect('login_page')
+
+    # Pass teams to the template for selection
+    teams = Team.objects.all()
+    return render(request, 'register.html', {'teams': teams})
+
+@login_required
+def user_profile(request):
+    profile = request.user.userprofile
+    return render(request, "authentication/user_profile.html", {"profile": profile})
 
 

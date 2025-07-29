@@ -1,0 +1,23 @@
+{% extends "landing_master.html" %}
+
+{% block title %}
+Welcome
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <div class="card shadow-lg p-4">
+                <h1 class="mb-4">Welcome to <span class="text-primary">My Soccer Club!</span></h1>
+                <p class="lead mb-4">Manage your teams, players, matches, and more—all in one place.</p>
+                <a href="{% url 'login_page' %}" class="btn btn-success btn-lg" hx-get="{% url 'login_page' %}" hx-target="#main-content" hx-swap="innerHTML">
+                    Login to your dashboard
+                </a>
+                <hr class="my-4">
+                <p class="text-muted">Don't have an account? <a href="{% url 'register' %}" hx-get="{% url 'register' %}" hx-target="#main-content" hx-swap="innerHTML">Register here</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

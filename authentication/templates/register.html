@@ -54,6 +54,16 @@
                     placeholder="Password" required>
             </div>
 
+            <!-- Team selection field -->
+            <div class="form-group">
+                <label for="team">Team:</label>
+                <select name="team" id="team" class="form-control" required>
+                    {% for team in teams %}
+                    <option value="{{ team.id }}">{{ team.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
             <!-- Link to login page for users who already have an account -->
             <p>Already have an account <a href="{% url 'login_page' %}">Login</a> </p>
 
